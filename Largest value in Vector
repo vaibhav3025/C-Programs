@@ -1,0 +1,49 @@
+#include<iostream>
+using namespace std;
+float largest( float a[], int n); //Function declaration
+int main()
+{ float a[50], big; 
+ int size;
+
+//Valid value of Size to be entered by the user
+cout<<"Enter the size of array <50 ";
+cin>>size;
+if (size>=51||size<=0)
+
+{ cout <<"Exiting - Invalid value"<<endl;
+exit (0);
+}
+
+//Entering the vector values
+cout<<"Enter the set of numbers \n";
+for (int i = 0; i<size; i++)
+{ cout<<"Enter the element "<<i+1<<"\n";
+    cin>>a[i];
+}
+
+//Display vector values
+cout << "The entered vector values are as below: \n"<<endl;
+for (int i = 0; i<size; i++)
+{ 
+    cout<<" "<<a[i];
+ 
+}
+//calling function to determine the largest value in the vector entered
+big = largest(a,size);
+cout<<"\nThe largest item in the array is "<<big;
+
+return 0;
+}
+//Function definition
+float largest (float a[], int n)
+{ float max;
+max = a[0];
+    for (int i = 0; i<n; i++)
+    { 
+    if (max < a[i])
+    { max =  a[i];
+    }
+        
+    }
+    return max;
+}
