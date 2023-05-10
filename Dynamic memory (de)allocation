@@ -1,0 +1,35 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{ int *roll;
+float *marks;
+int size;
+
+roll = new int[size];
+marks = new float[size];
+
+cout<<"Enter the number of pupils";
+cin>>size;
+
+//check for memory
+
+if((!roll)||(!marks))
+{ cout<<"Out of memory/bounds, exiting the operation"<<endl;
+}
+
+for (int i =0; i<size; ++i)
+{ cout<<"enter the roll number and marks of the student "<<i+1<<"\n";
+  cin>>roll[i]>>marks[i];
+}
+
+//Display the contents of the arrays entered
+
+for (int i =0; i<size; ++i)
+{ cout <<"Roll no: \t"<<roll[i]<<" Marks: \t"<<marks[i];
+}
+ delete []roll;
+ delete []marks;
+return 0;
+
+}
