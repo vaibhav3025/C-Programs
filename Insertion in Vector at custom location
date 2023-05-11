@@ -1,0 +1,41 @@
+#include<iostream>
+using namespace std;
+int main()
+{ int a[50], size, item, pos;
+
+cout<<"Enter the size of the vector"<<endl;
+cin>>size;
+
+cout<<"\nEnter the elements of the vector\t";
+for (int i=0;i<size; i++)
+cin>>a[i];
+
+char ch = 'y';
+
+while ((ch =='y')||(ch =='Y'))
+{ cout<<"\nEnter the item you wish to insert in the array\t";
+  cin>> item;
+  cout<<"\nEnter the position at which you want to insert this value\t";
+  cin>>pos;
+  if ((pos <=0 )|| (pos>size+1))
+  { cout<<"Out of bounds. Aborting!!";
+  exit(1);
+  }
+  
+
+  for (int i = size ; i>pos-1 ; i-- )
+{ a[i]= a[i-1];
+
+}
+a[pos-1]=item;
+size++;
+
+cout<<"Enter more values (y/n)?"<<endl;
+cin>>ch;
+}
+
+cout<<"The updated array is\n";
+for (int i =0; i<size ;++i)
+cout<<" "<<a[i];
+return 0;
+}
