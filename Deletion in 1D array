@@ -1,0 +1,60 @@
+//Deletion in 1D Array
+#include<iostream>
+using namespace std;
+int Lsearch(int [], int, int);
+int main()
+{ int size, item, a[50], index;
+ cout<<"Enter the size of the array < 50"<<endl;
+ cin>>size;
+ if (size>49)
+ { cout<<"Out of bounds! Abort!"<<endl;
+ }
+
+cout<<"Enter the elements of the array\n";
+for (int i =0;i<size; ++i)
+cin>>a[i];
+
+cout<<"Enter the item to be deleted from the array\n"<<endl;
+cin>>item;
+
+index = Lsearch(a, size, item);
+if (index == -1)
+{ cout<<"Element not found"<<endl;
+}
+
+else 
+cout<<"Element found at position: "<<index;
+
+
+for (int i = 0; i<size; ++i)
+{ a[index-1]=0;
+}
+
+cout<<"\nArray after removal 0 represents the removed value\n"<<endl;
+for (int i =0; i<size; i++)
+cout<<" "<<a[i];
+
+cout<<"\nArray after the removal of the empty (0) element\n"<<endl;
+for (int i =index-1; i<size; ++i)
+{ a[i] = a[i+1];
+
+
+    
+}
+size--;
+
+for (int i = 0;i< size ; i++)
+cout<<" "<<a[i];
+return 0;
+}
+
+
+
+int Lsearch(int a[], int size, int item)
+{ int pos = -1;
+    for (int i=0; i<size; ++i)
+ {  if (a[i]==item)
+ pos = i+1;
+ }
+ return pos;
+}
