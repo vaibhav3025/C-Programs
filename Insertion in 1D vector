@@ -1,0 +1,57 @@
+//Insertion in array
+#include<iostream>
+using namespace std;
+int findpos(int a[], int, int);
+int main()
+{ 
+    int size, index, item, a[50];
+    char ch = 'y';
+    cout<<"Enter the size of the array (<50)"<<endl;
+    cin>>size;
+    cout<<"enter the elements of the vector";
+    for (int i =0; i<size; i++)
+    cin>>a[i];
+   while ((ch == 'y')||(ch =='Y'))
+  { cout <<"Enter item to be added in the array"<<endl;
+    cin>>item;
+
+
+index = findpos(a, size, item);
+
+for (int i = size; i>index ; i--)
+{ a[i] = a[i-1];
+}
+
+a[index] = item;
+size+=1;
+
+cout<<"The updated array is "<<endl;
+for (int i= 0; i<size; i++)
+{ cout <<" "<<a[i];
+}
+
+      cout<<"\nWant to enter more? (Y to continue and type anything else to exit)";
+      cin>>ch;
+  }
+return 0;
+
+}
+
+int findpos(int a[], int size, int item)
+{ int pos;
+ if (item <a[0])
+ { pos = 0;}
+else
+{
+    for (int i =0; i<size; i++)
+    { if ((item >= a[i]) && ( item <=a[i+1]) )
+    {pos = i+1; break;
+    }
+    if (i == size-1)
+   { pos = size;}
+}
+}
+  
+ return pos; 
+}  
+    
