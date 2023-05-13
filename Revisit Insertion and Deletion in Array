@@ -1,0 +1,81 @@
+#include<iostream>
+using namespace std;
+int search (int [], int , int);
+int main()
+{ int a[50], size, item, pos, ch, index;
+ char choice ='Y'; //Keep this true for first iteration
+
+cout<<"Enter the size of the array (<50)"<<endl;
+cin>>size;
+
+if(size>=50)   //Check for Overflow          
+    { cout<<"\nOverflow! Aborting...\n"<<endl; exit(1);}
+
+else //Enter the elements as usual
+cout<<"Enter the elements of the array\n";
+for (int i = 0; i<size; ++i)
+cin>>a[i];
+
+while ((choice == 'y')|| (choice == 'Y'))
+{
+cout<<"Choose the operation for your array: \n1. Insertion  2. Deletion\n Key in any other value to exit."<<endl;
+cin>>ch;
+
+switch(ch)
+{ case 1:
+    cout<<"Enter the position where you wish to enter the value\n"<<endl;
+    cin>>pos;
+    if ((pos < 0)||(pos > size + 1))
+    { cout<<"Invalid value entered! Aborting!!"<<endl; exit(1);}
+    cout<<"Enter the element"<<endl;
+    cin>>item;
+
+    for (int i= size ; i>=pos ; --i)
+    { a[i] = a[i-1];}
+    a[pos-1] = item;
+    size++;
+
+    cout<<"The updated array is\n";
+    for (int i =0; i<size;++i)
+    cout<<" "<<a[i];
+    break;
+
+case 2:
+    
+    cout<<"\nEnter the item to be deleted\n";
+    cin>>item;
+    index = search (a, size, item);
+    if(index==-1)
+        { cout<<"The value could not be found"<<endl; exit(1);}
+    else
+        for( int i= 0;i<size; ++i)
+            { a[index] = 0;
+                cout<<" "<<a[i];
+            }    
+        for (int i =index;i<size-1 ; ++i)
+            {a[i]=a[i+1];
+            } size--;
+        cout<<"The final array is\n";
+        for (int i =0;i<size;i++)
+        cout<<" "<<a[i];
+        
+    break;
+
+default: cout<<"Invalid value entered!!! Aborting!!"<<endl;
+            break;
+
+}
+cout<<"\nDo you want to continue performing the ops? (Y/N)"<<endl;
+cin>>choice;
+}
+return 0;
+}
+ int search(int a[], int size, int item )
+ { int pos = -1;
+     for (int i=0;i<size;++i)
+         if (a[i]==item)
+            { pos = i; }
+    return pos;
+}
+  
+  
