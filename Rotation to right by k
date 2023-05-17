@@ -1,0 +1,28 @@
+//Rotation of array by k to the right
+#include<iostream>
+using namespace std;
+int main()
+{ int a[20], k, size, temp[20];
+
+cout<<"Enter size"<<endl;
+cin>>size;
+
+cout<<"\nEnter Elements"<<endl;
+for (int i=0;i<size;i++)
+cin>>a[i];
+cout<<"\nRotation Factor "<<endl;
+cin>>k;
+
+for (int i =0;i<size; i++)
+{ temp[i] = a[i+k];
+
+if ((i+k)>size-1)
+{ temp[i] = a[i+k-size];
+}
+}
+cout<<"The rotated array by right by "<<k<<" is "<<endl;
+for (int i =0; i<size ; i++)
+cout<<" "<<temp[i];
+
+return 0;
+}
