@@ -1,0 +1,40 @@
+/* Sieve of Eratostheses -  This method uses numbers from 2 to say an upper limit which initally assumes
+all the numbers as prime numbers till the upper limit. Then it starts eliminating composite numbers; sieving out 
+prime numbers. Here there are 3 loops, first one initializes all the numbers as prime in the sieving array, the second loop 
+runs till the upper limit from which is square root of upper limit and the third limit sieves out composite numbers
+*/
+#include<iostream>
+using namespace std;
+int main()
+{ int sieve[101], max, counter;
+
+cout<<"Enter the number (<=100)"<<endl;
+cin>>max;
+
+for (int i =2; i<max; i++)
+sieve[i] = 1; //Initialize numbers as Prime, except 0 and 1 since they are neither prime nor composite
+
+for (int i =2; i*i<max;i++) //Limiting loop till upper bound
+    { for (int j =i ; i*j<max; ++j) //sieving out composite number 
+      if (sieve [i]==1) //Check for Prime numbers 
+       { sieve [i*j] = 0; //Sieving out composite number
+        }
+    }
+    
+//Display the prime numbers
+
+for (int  k =2; k<max;k++)
+{ if (sieve[k]==1)
+ 
+ counter++;
+
+
+}
+cout<<"The number of primes till "<<max<<" is "<<counter<<"\n";
+cout<<"The primes till "<<max<<" are "<<endl;
+for(int j = 2;j<max; j++)
+{ if (sieve[j]==1)
+    cout<<" "<<j;
+}
+return 0; 
+}
