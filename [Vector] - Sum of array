@@ -1,0 +1,19 @@
+//Function to convert a number to array and sum them and then extract the elements as a vector
+#include <bits/stdc++.h> 
+vector<int> findArraySum(vector<int>&a, int n, vector<int>&b, int m) {
+	vector <int>sol;
+	int digit, c1=0, c2=0, c=0, i, j;
+	for(i=0;i<n;i++)
+	{ c1 = c1+a[i]*(pow(10,n-1-i)); }
+
+	for(j=0;j<m;j++)
+	{ c2 = c2+b[j]*(pow(10,m-1-j)); }
+c = c1+c2;
+while (c>0)
+{ digit = c%10;//extract the right most value
+sol.push_back(digit);
+c = c/10;
+
+}reverse(sol.begin(), sol.end());
+return sol;
+}
