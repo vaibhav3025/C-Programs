@@ -1,0 +1,62 @@
+int pivotele(vector <int> &arr, int n)
+{
+    int beg =0, end = n-1;
+    int mid = beg + (end - beg)/2;
+    while(beg<end)
+    {
+        if(arr[mid]>arr[0])
+        {
+            beg = mid+1;
+        }
+        else
+        {
+            end = mid;
+        }
+
+        mid = beg +(end - beg)/2;
+    }
+    return beg;
+}
+
+int binarysearch(vector <int> &arr, int start, int last, int k)
+{
+    int beg = start, end = last;
+    int mid = beg +(end-beg)/2;
+    int index = -1;
+    while(beg<=end)
+    {
+        if(arr[mid]>k)
+        {
+            end = mid-1;
+        }
+        else if (arr[mid]<k)
+        {
+            beg = mid+1;
+        }
+
+        else if (arr[mid]==k)
+        {   index  = mid;
+            return index;
+        }
+        mid = beg + (beg-end)/2;
+        }
+return index;
+}
+
+
+int search(vector<int>& arr, int n, int k)
+{ int pivindex;
+//int index = -1;
+
+pivindex=pivotele(arr,n);
+
+if ((arr[pivindex]<= k)&&(k <= arr[n - 1])) {
+  return binarysearch(arr, pivindex, n-1, k);
+} 
+
+else {
+  return binarysearch(arr, 0, pivindex-1, k);
+  }
+//return index;
+}
+
